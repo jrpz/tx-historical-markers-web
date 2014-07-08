@@ -1,0 +1,21 @@
+{
+  "name": "tx-landmarks-web",
+  "version": "0.2.1",
+  "homepage": "",
+  "authors": [
+    "Jaime Perez <jaime@brlrl.com>"
+  ],
+  "description": "Catalog of Texas Historical Landmarks",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
