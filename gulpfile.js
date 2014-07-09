@@ -40,14 +40,9 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-// Bower Files
-gulp.task('bower-files', function() {
-  $.bowerFiles().pipe(gulp.dest('app/scripts/vendors'));
-});
-
 // Lint JavaScript
 gulp.task('jshint', function () {
-  return gulp.src('app/scripts/**/*.js')
+  return gulp.src(['app/scripts/**/*.js', '!app/scripts/vendor/**'])
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
@@ -157,7 +152,7 @@ gulp.task('html', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['bower-files'], function () {
+gulp.task('serve', function () {
   browserSync({
     notify: false,
     server: {

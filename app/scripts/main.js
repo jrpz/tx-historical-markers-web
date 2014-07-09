@@ -16,34 +16,46 @@
  *  limitations under the License
  *
  */
+
+// markernum: "3457",
+// title: "Moore Field",
+// indexname: "Moore Field",
+// address: "",
+// city: "Mission"…}
+// address: ""
+// atlas_number: "5215003457"
+// city: "Mission"
+// code: "World War II; aviation; military topics"
+// county: "Hidalgo"
+// indexname: "Moore Field"
+// loc_desc: "from Mission, take FM 2993 north about 8 miles to FM 1925, then take FM 1925 west about 2 miles, then go north on FM 681 about 1 mile"
+// markernum: "3457"
+// markertext: "A United States aviation training field, originally financed by the nearby cities of Edinburg, McAllen and Mission, was started here in 1941.  Named for Lt. Frank M. Moore, a pilot killed in World War I, it was used for the training of World War II airmen.  After the field was closed in 1945, the facilities were shared by a tri-cities commercial airport and the Weaver H. Baker Memorial Tuberculosis Hospital.  Reactivated as Moore Air Force Base during the Korean War of the 1950s, the site has housed research offices of the United States Department of Agriculture since 1960.  (1981)"
+// rthl: "0"
+// size: "18"" x 28"""
+// title: "Moore Field"
+// utm_east: "566952"
+// utm_north: "2917576"
+// utm_zone: "14"
+// year: "1981"
+
 (function () {
-  'use strict';
-
-  var querySelector = document.querySelector.bind(document);
-
-  var navdrawerContainer = querySelector('.navdrawer-container');
-  var body = document.body;
-  var appbarElement = querySelector('.app-bar');
-  var menuBtn = querySelector('.menu');
-  var main = querySelector('main');
-
-  function closeMenu() {
-    body.classList.remove('open');
-    appbarElement.classList.remove('open');
-    navdrawerContainer.classList.remove('open');
-  }
-
-  function toggleMenu() {
-    body.classList.toggle('open');
-    appbarElement.classList.toggle('open');
-    navdrawerContainer.classList.toggle('open');
-  }
-
-  main.addEventListener('click', closeMenu);
-  menuBtn.addEventListener('click', toggleMenu);
-  navdrawerContainer.addEventListener('click', function (event) {
-    if (event.target.nodeName === 'A' || event.target.nodeName === 'LI') {
-      closeMenu();
-    }
+  var markers_json_location = "./data/markers_hidalgo.json";
+  $.getJSON(markers_json_location, function(data){
+    var markers = data;
+    var line_template = _.template('<tr class="<%- id %>"><td data-th="marker"><strong><%= title %></strong><br /><%= city %> - <%= year %><br /><%= coordinates %></td><td><%= text %></td></tr>');
+    _.each(markers, function(marker, i){
+      var line_item = {
+        "id"          : marker.markernum,
+        "title"       : marker.title,
+        "address"     : marker.address,
+        "city"        : marker.city,
+        "year"        : marker.year,
+        "text"        : marker.markertext,
+        "coordinates" : 'Z: ' + marker.utm_zone + '<br/>E: ' + marker.utm_east + '<br/>N: ' + marker.utm_north
+      };
+      
+      $('#markers_table tbody').append(line_template(line_item));
+    });
   });
 })();
