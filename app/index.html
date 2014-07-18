@@ -42,28 +42,36 @@
       </div>
     </header>
 
-    <main>
+    <main id="markers-app">
       <h2>Hidalgo Historical Markers</h2>
-      <section class="markers_talbe">
-        <table id="markers_table" class="table-2">
-          <colgroup>
-            <col span="1">
-            <col span="1">
-          </colgroup>
-          <thead>
-            <tr>
-              <th width="25%">Marker</th>
-              <th>Marker Text</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
+      <section id="marker-controls">
+        <a href="#" id="sort-by-title">Sort By Title</a>
+        <a href="#" id="sort-by-city">Sort By City</a>
+        <a href="#" id="sort-by-year">Sort By Year</a>
       </section>
+
+      <section id="markers-list"></section>
     </main>
 
+    <script id="marker-row-template" type="text/template">
+      <h3><%= title %></h3>
+      <h4>City: <%= city %> | Posted: <%= year %></h4>
+      
+      <p>
+        <%= markertext %>
+      </p>
+        
+      <div class="staticmap-image">
+        <img src="//placehold.it/600x400" />
+      </div>
+
+      <div class="inverted-block">
+        <a href="#" class="view-staticmap-btn button--secondary-variation">View Map</a>
+      </div>
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- build:js scripts/main.min.js -->
-    <script src="scripts/vendor/jquery/dist/jquery.min.js"></script>
     <script src="scripts/vendor/underscore/underscore.js"></script>
     <script src="scripts/vendor/backbone/backbone.js"></script>
     <script src="scripts/main.js"></script>

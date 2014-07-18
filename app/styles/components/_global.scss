@@ -57,3 +57,17 @@ pre {
     }
   }
 }
+
+.marker {
+  margin: 10px auto;
+  padding: 5px 0 15px;
+  border-bottom: 1px solid $colorGray;
+
+  .staticmap-image { display: none; }
+}
+
+.inverted-block {
+  background-color: $colorGrayBackground;
+  padding: .25em 1em;
+  margin: 10px auto;
+}

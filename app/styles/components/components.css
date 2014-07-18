@@ -536,6 +536,21 @@ pre {
   }
 }
 
+.marker {
+  margin: 10px auto;
+  padding: 5px 0 15px;
+  border-bottom: 1px solid #737373;
+}
+.marker .staticmap-image {
+  display: none;
+}
+
+.inverted-block {
+  background-color: #f0f0f0;
+  padding: .25em 1em;
+  margin: 10px auto;
+}
+
 @font-face {
   font-family: "icons";
   src: url("../../images/icons/icons.eot");
