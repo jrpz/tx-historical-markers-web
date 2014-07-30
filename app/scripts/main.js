@@ -2,7 +2,12 @@ var app = app || {};
 
 // Marker Model
 // ====================================================
-app.Marker = Backbone.Model.extend({});
+app.Marker = Backbone.Model.extend({
+  // get_cords: function(collection) {
+  //   var latitude  = collection.latitude,
+  //       longitude = collection.longitude;
+  // }
+});
 
 // Marker View
 // ====================================================
@@ -11,22 +16,12 @@ app.MarkerView = Backbone.View.extend({
   className: 'marker',
   template: _.template( $('#marker-row-template' ).html() ),
 
-  events: {
-    'click .view-staticmap-btn': 'showStaticMap'
-  },
+  events: {},
 
   // Render view
   render: function() {
     this.$el.html( this.template(this.model.attributes ));
     return this;
-  },
-
-  // Events
-  showStaticMap: function() {
-    //$('.staticmap-image').show();
-    $(this.el).find('.staticmap-image').toggle();
-    console.log('Check street view.');
-    return false;
   },
 });
 
@@ -38,7 +33,7 @@ app.Markers = Backbone.Collection.extend({
 
   comparator: function( collection ) {
     return collection.get('title');
-  },
+  }
 });
 
 // The Application
@@ -47,14 +42,10 @@ app.AppView = Backbone.View.extend({
   el: '#markers-app',
 
   initialize: function() {
-    console.log('App initialized.');
     this.collection = new app.Markers();
     this.collection.fetch({reset: true});
     this.render();
-
-    this.listenTo( this.collection, 'reset sort', this.render );
-
-    this.collection.sortByTitle;
+    this.listenTo( this.collection, 'reset', this.render );
   },
 
   // Render
@@ -73,7 +64,7 @@ app.AppView = Backbone.View.extend({
   },
 
   sortMarkersByTitle: function() {
-    console.log('Sorting Title.');
+    console.log('Sorting Title.');    
     return false;
   },
 
