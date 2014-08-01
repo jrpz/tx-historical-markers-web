@@ -30,6 +30,16 @@
     <link rel="stylesheet" href="styles/components/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
+    <style>
+      .chart {
+        background-color: #fefefe;
+      }
+
+      .chart .bar {
+        background-color: blue;
+      }
+    </style>
   </head>
   <body>
     <header class="app-bar promote-layer">
@@ -43,26 +53,15 @@
     </header>
 
     <main id="markers-app">
-      <h2>Hidalgo Historical Markers</h2>
-      <section id="markers-list"></section>
+      <div class="chart" id="chart-cities"></div>
     </main>
-
-    <script id="marker-row-template" type="text/template">
-      <h3><%= title %></h3>
-      <h4>City: <%= city %> | Posted: <%= year %></h4>
-      
-      <p>
-        <%= markertext %>
-      </p>
-    </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/vendor/underscore/underscore.js"></script>
     <script src="scripts/vendor/backbone/backbone.js"></script>
     <script src="scripts/vendor/d3/d3.min.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/ddd.js"></script>
+    <script src="scripts/charts.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID 

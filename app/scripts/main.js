@@ -2,12 +2,7 @@ var app = app || {};
 
 // Marker Model
 // ====================================================
-app.Marker = Backbone.Model.extend({
-  // get_cords: function(collection) {
-  //   var latitude  = collection.latitude,
-  //       longitude = collection.longitude;
-  // }
-});
+app.Marker = Backbone.Model.extend({});
 
 // Marker View
 // ====================================================
@@ -15,8 +10,6 @@ app.MarkerView = Backbone.View.extend({
   tagName: 'div',
   className: 'marker',
   template: _.template( $('#marker-row-template' ).html() ),
-
-  events: {},
 
   // Render view
   render: function() {
@@ -54,30 +47,7 @@ app.AppView = Backbone.View.extend({
       var markerView = new app.MarkerView({ model: item });
       $('#markers-list').append( markerView.render().el );
     }, this);
-  },
-
-  // Events
-  events: {
-    'click #marker-controls #sort-by-title': 'sortMarkersByTitle',
-    'click #marker-controls #sort-by-city': 'sortMarkersByCity',
-    'click #marker-controls #sort-by-year': 'sortMarkersByYear'
-  },
-
-  sortMarkersByTitle: function() {
-    console.log('Sorting Title.');    
-    return false;
-  },
-
-  sortMarkersByCity: function() {
-    console.log('Sorting city.');
-    return false;
-  },
-
-  sortMarkersByYear: function() {
-    console.log('Sorting year.');
-    return false;
   }
-
 });
 
 // Start Marking
